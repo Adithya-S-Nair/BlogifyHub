@@ -1,0 +1,21 @@
+#create-page {
+    background-image: url('../assets/svgs/create-blog-icon.svg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 93vh;
+    background-position: right;
+}
+
+@media only screen and (max-width: 774px) {
+    .filter-box {
+        display: none;
+    }
+
+    #create-page {
+        background-image: none;
+    }
+
+    .display-name {
+        display: none;
+    }
+}

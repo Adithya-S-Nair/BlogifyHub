@@ -49,9 +49,12 @@ const loginUser = async (req, res) => {
     }
 };
 
+const logoutUser = (req, res) => {
+    res.status(200);
+}
+
 const home = (req, res) => {
     if (req.userId) {
-        console.log('given');
         return res.status(200).json({ msg: 'Authorization successful', userId: req.userId, username: req.username });
     }
 }
@@ -59,5 +62,6 @@ const home = (req, res) => {
 module.exports = {
     registerUser,
     loginUser,
+    logoutUser,
     home
 };

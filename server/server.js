@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const userRoute = require('./routes/userRoute');
+const blogRoute = require('./routes/blogRoute');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use the routes
 app.use('/api/', userRoute);
+app.use('/api/blog', blogRoute);
 
 // Connect to DB
 mongoose.connect(process.env.MONGODB_URI, {

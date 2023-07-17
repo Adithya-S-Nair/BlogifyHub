@@ -6,6 +6,7 @@ const checkAuth = require('../middlewares/checkAuth');
 // Define user routes
 router.post('/register', userController.registerUser);
 router.post('/login', userController.loginUser);
+router.get('/logout', userController.logoutUser);
 router.get('/home', checkAuth, userController.home);
 
 module.exports = router;
