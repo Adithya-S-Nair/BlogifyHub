@@ -9,6 +9,7 @@ import './App.css';
 import Homepage from './Pages/Homepage'
 import Authpage from './Pages/Authpage'
 import Createpage from './Pages/Createpage';
+import ReadBlogPage from './Pages/ReadBlogPage';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path='/' element={<Homepage />} />
           <Route exact path='/auth' element={<Authpage />} />
           <Route exact path='/create' element={<Createpage />} />
+          <Route exact path='/read/:id' element={<ReadBlogPage />} />
         </Routes>
       </Router>
     </>

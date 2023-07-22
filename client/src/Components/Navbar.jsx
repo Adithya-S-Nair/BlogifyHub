@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import {
     MDBContainer,
@@ -8,7 +8,9 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios'
+import { AuthContext } from '../Context/authContext';
 const Navbar = () => {
+    const { user, setUser } = useContext(AuthContext)
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -23,7 +25,8 @@ const Navbar = () => {
 
     const handleLogout = () => {
         axios.get('/api/logout').then(() => {
-            console.log('Logout Success');
+            setUser(null)
+            navigate('/auth')
         })
     }
 
@@ -36,10 +39,25 @@ const Navbar = () => {
                     </svg>
                     <Link to='/' className='text-primary h5 pt-1'>BLOGIFY HUB</Link>
                 </div>
-                <div className="d-flex align-items-center mt-sm-1 gap-1" onClick={handleMenuClick} style={{ cursor: 'pointer' }}>
-                    <Avatar className='bg-warning user-select-none' style={{ width: '1.3em', height: '1.3em' }}><span style={{ fontSize: '0.8em' }}>A</span></Avatar>
-                    <span className='user-select-none display-name'>Adithya S Nair</span>
-                </div>
+                {user && <div className="d-flex align-items-center mt-sm-1 gap-1" onClick={handleMenuClick} style={{ cursor: 'pointer' }}>
+                    <Avatar
+                        className='bg-primary user-select-none'
+                        style={{ width: '1.3em', height: '1.3em' }}>
+                        <span style={{
+                            fontSize: '0.6em'
+                        }}
+                            className='text-uppercase fw-bold'>
+                            {user.username[0]}
+                        </span>
+                    </Avatar>
+                    <span
+                        className='user-select-none display-name text-capitalize'>
+                        {user.username}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: '0.9em' }}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </span>
+                </div>}
                 <Menu
                     id="basic-menu"
                     anchorEl={anchorEl}

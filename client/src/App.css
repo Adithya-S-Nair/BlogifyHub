@@ -1,3 +1,7 @@
+.pointer {
+    cursor: pointer;
+}
+
 #create-page {
     background-image: url('../assets/svgs/create-blog-icon.svg');
     background-repeat: no-repeat;
@@ -6,11 +10,59 @@
     background-position: right;
 }
 
-@media only screen and (max-width: 774px) {
-    .filter-box {
-        display: none;
-    }
+.cardContainer {
+    margin-bottom: 1em;
+    transition: max-height 0.3s ease-in-out;
+}
 
+.cardContainer.expanded {
+    max-height: 1000px;
+    margin-bottom: 1em;
+}
+
+.cardContent {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+
+.blogsContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.text-button:hover {
+    text-decoration: underline !important;
+}
+
+.useful-links:hover {
+    text-decoration: underline;
+}
+
+.cover:hover>.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    display: none;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 2em;
+    text-align: center;
+    left: 0.8rem;
+}
+
+.cover-img {
+position: absolute;
+top: 0.9em;
+}
+
+@media only screen and (max-width: 784px) {
     #create-page {
         background-image: none;
     }

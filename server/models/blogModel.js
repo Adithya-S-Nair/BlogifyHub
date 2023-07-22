@@ -7,6 +7,10 @@ const blogModel = new mongoose.Schema({
         required: true,
         unique: true
     },
+    // category: {
+    //     type: String,
+    //     required: true
+    // },
     summary: {
         type: String,
         required: true

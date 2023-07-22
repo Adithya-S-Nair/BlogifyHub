@@ -37,7 +37,7 @@ export const Filter = () => {
     };
 
     return (
-        <MDBCard style={{ height: 'fit-content' }} className='filter-box'>
+        <MDBCard style={{ height: 'fit-content' }} className='filter-box pe-5'>
             <MDBCardBody>
                 <MDBCardTitle className='text-primary'>Filter</MDBCardTitle>
                 <MDBCardText className='text-muted pt-2'>Language</MDBCardText>

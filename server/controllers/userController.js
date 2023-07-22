@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
         jwt.sign({ userId: userData._id, username: userData.username }, process.env.JWT_SECRET, (err, token) => {
             if (err)
                 throw err
-            res.cookie('token', token, { httpOnly: true, secure: true, sameSite: "strict" }).status(201).json({ id: userData._id, username: userData.username });
+            res.cookie('token', token).status(201).json({ id: userData._id, username: userData.username });
         })
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -50,7 +50,10 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-    res.status(200);
+    return res
+        .clearCookie("token")
+        .status(200)
+        .json({ message: "Successfully logged out" });
 }
 
 const home = (req, res) => {
