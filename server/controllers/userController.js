@@ -62,9 +62,21 @@ const home = (req, res) => {
     }
 }
 
+const fetchUserById = async (req, res) => {
+    try {
+        if (req.userId) {
+            const userData = await User.findOne({ _id: req.userId }).select('username email createdAt');
+            res.status(200).json({ userData });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Error fetching user data' });
+    }
+}
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
-    home
+    home,
+    fetchUserById
 };

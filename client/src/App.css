@@ -58,8 +58,29 @@
 }
 
 .cover-img {
-position: absolute;
-top: 0.9em;
+    position: absolute;
+    top: 0.9em;
+}
+
+#view-action:hover>svg {
+    color: #3b71ca;
+}
+
+#delete-action:hover>svg {
+    color: #dc4c64;
+}
+
+#edit-action:hover>svg {
+    color: #e4a11b;
+}
+
+.actions {
+    display: none;
+}
+
+.cardContainer:hover .actions {
+    display: flex;
+    gap: 1em;
 }
 
 @media only screen and (max-width: 784px) {

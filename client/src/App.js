@@ -10,6 +10,7 @@ import Homepage from './Pages/Homepage'
 import Authpage from './Pages/Authpage'
 import Createpage from './Pages/Createpage';
 import ReadBlogPage from './Pages/ReadBlogPage';
+import Profilepage from './Pages/Profilepage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path='/auth' element={<Authpage />} />
           <Route exact path='/create' element={<Createpage />} />
           <Route exact path='/read/:id' element={<ReadBlogPage />} />
+          <Route exact path='/profile' element={<Profilepage />} />
         </Routes>
       </Router>
     </>

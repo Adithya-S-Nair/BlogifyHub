@@ -5,19 +5,19 @@ const fs = require('fs')
 
 const fetchAllBlogs = async (req, res) => {
     try {
-        blogData = await Blog.find()
+        const blogData = await Blog.find()
             .populate('author', ['username'])
             .sort({ createdAt: -1 });
         res.status(200).json({ blogs: blogData });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: 'Error fetching blog' });
+        res.status(500).json({ error: 'Error fetching blogs' });
     }
 }
 
 const fetchBlogById = async (req, res) => {
     try {
-        blogData = await Blog.findOne({ _id: req.params.id })
+        const blogData = await Blog.findOne({ _id: req.params.id })
             .populate('author', ['username']);
         res.status(200).json({ blogs: blogData });
     } catch (error) {
@@ -25,6 +25,16 @@ const fetchBlogById = async (req, res) => {
         res.status(500).json({ error: 'Error fetching blog' });
     }
 };
+
+const fetchMyBlogs = async (req, res) => {
+    try {
+        const blogData = await Blog.find({ author: req.userId }).select('title createdAt');
+        res.status(200).json({ blogs: blogData });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Error fetching my blog' });
+    }
+}
 
 const writeBlog = (req, res) => {
     const { title, summary, content } = req.body
@@ -37,7 +47,7 @@ const writeBlog = (req, res) => {
         title,
         summary,
         content,
-        cover:newPath,
+        cover: newPath,
         author: req.userId
     })
     newBlog.save()
@@ -53,5 +63,6 @@ const writeBlog = (req, res) => {
 module.exports = {
     fetchAllBlogs,
     fetchBlogById,
+    fetchMyBlogs,
     writeBlog
 };

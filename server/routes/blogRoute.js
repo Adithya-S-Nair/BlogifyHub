@@ -7,7 +7,8 @@ const uploadMiddleware = multer({ dest: 'uploads/' })
 
 // Define user routes
 router.get('/', checkAuth, blogController.fetchAllBlogs);
-router.get('/:id', checkAuth, blogController.fetchBlogById);
+router.get('/fetchsingle/:id', checkAuth, blogController.fetchBlogById);
+router.get('/myblogs', checkAuth, blogController.fetchMyBlogs);
 router.post('/new', checkAuth, uploadMiddleware.single('cover'), blogController.writeBlog);
 
 module.exports = router;

@@ -13,7 +13,8 @@ const ReadBlogPage = () => {
     const [blogData, setBlogData] = useState(null);
 
     useEffect(() => {
-        axios.get(`/api/blog/${id}`).then((response) => {
+        axios.get(`/api/blog/fetchsingle/${id}`).then((response) => {
+            console.log(response.data);
             setBlogData(response.data);
             setLoading(false)
         })
@@ -39,7 +40,7 @@ const ReadBlogPage = () => {
                             height: '400px',
                             objectFit: 'cover'
                         }}
-                        src="https://media.istockphoto.com/id/1198931639/photo/writing-a-blog-blogger-influencer-reading-text-on-screen.jpg?b=1&s=612x612&w=0&k=20&c=_C4iNvLOzKbbfbeTMsJ4mQf8OGQwYWJ8GWKLKRglrF8="
+                        src={"http://localhost:5000/" + blogData.blogs.cover}
                         alt="blog cover"
                         className='mt-5' />
                     <p className='mt-5' dangerouslySetInnerHTML={{ __html: blogData.blogs.content }} />
