@@ -9,6 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Filter } from '../Components/Filter';
 import Footer from '../Components/Footer';
 import TemporaryDrawer from '../Components/Filterdrawer';
+import Pagination from '../Components/Pagination';
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -77,6 +78,7 @@ const Homepage = () => {
                 </div>
                 {drawer && <TemporaryDrawer open={drawer} anchor='right' setDrawer={setDrawer} />}
             </div>
+            <Pagination/>
             <Footer />
         </main>
     );

@@ -40,8 +40,8 @@ export const Filter = () => {
         <MDBCard style={{ height: 'fit-content' }} className='filter-box pe-5'>
             <MDBCardBody>
                 <MDBCardTitle className='text-primary'>Filter</MDBCardTitle>
-                <MDBCardText className='text-muted pt-2'>Language</MDBCardText>
-                <MDBCheckbox name='flexCheck' value='english' id='flexCheckDefault' label='English' onChange={handleLanguageChange} />
+                <MDBCardText className='text-muted pt-2'>Category</MDBCardText>
+                <MDBCheckbox name='flexCheck' value='english' id='flexCheckDefault' label='Conserts' onChange={handleLanguageChange} />
                 <MDBCheckbox name='flexCheck' value='hindi' id='flexCheckDefault' label='Hindi' onChange={handleLanguageChange} />
                 <MDBCheckbox name='flexCheck' value='malayalam' id='flexCheckDefault' label='Malayalam' onChange={handleLanguageChange} />
                 <MDBCardText className='text-muted pt-3'>Date</MDBCardText>

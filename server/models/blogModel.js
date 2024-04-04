@@ -7,10 +7,14 @@ const blogModel = new mongoose.Schema({
         required: true,
         unique: true
     },
-    // category: {
-    //     type: String,
-    //     required: true
-    // },
+    category: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
     summary: {
         type: String,
         required: true
@@ -25,10 +29,20 @@ const blogModel = new mongoose.Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    likes: [{
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }],
+    isHidden: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true
-})
+});
 
 const Blog = mongoose.model('Blog', blogModel);
 
