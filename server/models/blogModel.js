@@ -11,7 +11,7 @@ const blogModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
+    location: {
         type: String,
         required: true
     },
